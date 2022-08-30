@@ -108,7 +108,7 @@ app.get("/time2", (req, res)=>{
 app.get("/urlencode", (req, res)=>{
     try{
         var {str} = req.query
-        res.json({code, encodeURIComponent(str)})
+        res.json({code: encodeURIComponent(str)})
     }catch(e){
         res.json(e)
     }
