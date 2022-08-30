@@ -2,7 +2,7 @@ const express = require('express')
 var cors = require('cors')
 const uuid = require('uuid')
 const md5 = require('md5')
-const moment = require('moment')
+const moment = require('moment-timezone')
 const app = express()
 
 app.use(cors())
@@ -73,7 +73,7 @@ app.get("/time1", (req, res)=>{
     var {str, zone} = req.query;
     if (!zone)zone='utc';
     try{
-        var m = moment(str, zone);
+        var m = moment.tz(str, zone);
         res.json({
             dateStr: m.format(),
             time: m.valueOf(),
@@ -86,17 +86,18 @@ app.get("/time1", (req, res)=>{
 })
 app.get("/time2", (req, res)=>{
     var {time, hourId} = req.query;
+    console.log(time)
     if(!time) {
         if(!hourId){
             res.json({})
             return
         }
-        time = hourId*3600000;
+        time = parseInt(hourId)*3600000;
     }
     try{
-        var m = moment(time);
+        var m = moment(parseInt(time));
         res.json({
-            dateStr: m.format(),
+            dateStr: m.tz('utc').format(),
             time: m.valueOf(),
             hourId: parseInt(m.valueOf()/3600000)
         })
