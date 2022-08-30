@@ -18,7 +18,7 @@ app.post("/post", (req, res) => {
 
 app.get("/base64", (req, res) => {
     var arr = [];
-    var {str, code} = req;
+    var {str, code} = req.query;
     if (str) {
         arr.push({str, code: Buffer.from(str).toString('base64')})
     }
