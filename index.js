@@ -11,7 +11,15 @@ app.use(express.urlencoded({ extended: true }))
 
 // 1 / 用于返回hello world
 app.get("/", (req, res) => {
-    res.send("hello world!")
+    res.json({
+        "/test":"get/post 返回请求参数用于测试",
+        "/base64":"get 传str返回code，或传code返回str",
+        "/md5": "get 传str返回md5",
+        "/uuid": "get 生成一个uuid",
+        "/time1": "get 传str（可选）和zone（可选）返回时间详细信息",
+        "/time2": "get 传毫秒数time或者hourId，返回时间详细信息",
+        "/urlencode":"get 传str返回url编码后的字符串"
+    })
 });
 
 // 2 /test 用于测试参数，将请求的参数返回
