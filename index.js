@@ -19,11 +19,15 @@ app.post("/post", (req, res) => {
 app.get("/base64", (req, res) => {
     var arr = [];
     var {str, code} = req.query;
-    if (str) {
-        arr.push({str, code: Buffer.from(str).toString('base64')})
-    }
-    if (code) {
-        arr.push({str: Buffer.from(code, 'base64').toString(), code})
+    try {
+        if (str) {
+            arr.push({str, code: Buffer.from(str).toString('base64')})
+        }
+        if (code) {
+            arr.push({str: Buffer.from(code, 'base64').toString(), code})
+        }
+    } catch(e){
+        console.error(e);
     }
     res.json(arr)
 });
