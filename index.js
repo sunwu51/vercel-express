@@ -3,9 +3,13 @@ var cors = require('cors')
 const uuid = require('uuid')
 const md5 = require('md5')
 const moment = require('moment-timezone')
+var morgan = require('morgan')
+
+app.use(morgan('combined'))
 const app = express()
 
 app.use(cors())
+app.use(morgan('combined'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
