@@ -120,6 +120,14 @@ app.get("/urlencode", (req, res)=>{
     }
 })
 
+app.use((req, res, next) => {
+    console.log({
+        header: req.headers,
+        body: req.body,
+        query: req.query
+    });
+    next();
+});
 
 app.listen(5000, ()=>{
     console.log("Listening on port 5000")
