@@ -128,6 +128,10 @@ app.use((req, res, next) => {
     });
     next();
 });
+app.post("/slack", (req, res)=>{
+    res.json(req.body)
+})
+
 
 app.listen(5000, ()=>{
     console.log("Listening on port 5000")
