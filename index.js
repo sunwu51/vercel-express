@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 
 // 2 /test 用于测试参数，将请求的参数返回
 app.get("/test", (req, res) => {
-    console.log("reqBody:", req.body)
+    console.log("reqQuery:", req.query)
     res.json({
         header: req.headers,
         body: req.body,
@@ -36,7 +36,7 @@ app.get("/test", (req, res) => {
 });
 
 app.post("/test", (req, res) => {
-    console.log("reqBody:", req.body)
+    console.log("reqBody:", JSON.stringify(req.body))
     res.json({
         header: req.headers,
         body: req.body,
