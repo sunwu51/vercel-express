@@ -36,6 +36,7 @@ app.get("/test", (req, res) => {
 });
 
 app.post("/test", (req, res) => {
+    console.log("reqBody:", req.body)
     res.json({
         header: req.headers,
         body: req.body,
